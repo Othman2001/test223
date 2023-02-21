@@ -40,6 +40,8 @@ function MyApp ({ Component, pageProps }:AppProps) {
   useEffect(() => {
       // @ts-ignore
     overmind.actions.NextConfig.add.changePage(pageProps.mutations || [])
+    rehydrate(overmind.state, mutations)
+    rehydrate(overmind.state, mutations)
   }, [pageProps.mutations])
   return (
       <Provider value={overmind}>
