@@ -9,6 +9,7 @@ import {
 const incrment:Action = ({state})=>{
     // eslint-disable-next-line no-param-reassign
     state.counter.counter +=1;
+    console.log(state.counter.counter)
 }
 const counter = {
     state:{counter:0},
