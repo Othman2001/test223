@@ -6,8 +6,8 @@ import {Provider } from "overmind-react"
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { appWithTranslation } from 'next-i18next';
-import {config } from "../services/store/config"
 import { useRouter } from "next/router";
+import {config } from "../services/store/config"
 
 
 function MyApp ({ Component, pageProps }:AppProps) {
