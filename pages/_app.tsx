@@ -36,6 +36,8 @@ function MyApp ({ Component, pageProps }:AppProps) {
   }, [mutations])
   useEffect(()=>{
     setMutations( pageProps.mutations || [])
+    rehydrate(overmind.state, mutations)
+    rehydrate(overmind.state, mutations)
   },[pageProps.mutations])
   useEffect(() => {
       // @ts-ignore
