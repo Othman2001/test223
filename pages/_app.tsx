@@ -11,7 +11,6 @@ import {config } from "../services/store/config"
 
 
 function MyApp ({ Component, pageProps }:AppProps) {
-  const [lang , setLang] = useState("en");
   const getDirection = (locale:string) => { 
     if(locale === "ar") { 
       return "rtl";
@@ -25,6 +24,8 @@ function MyApp ({ Component, pageProps }:AppProps) {
     let overmind
     if (typeof window !== 'undefined') {
       overmind = createOvermind(config)
+      rehydrate(overmind.state, mutations)
+
       // @ts-ignore
       overmind.actions.NextConfig.add.changePage(mutations)
     } else {
@@ -40,15 +41,10 @@ function MyApp ({ Component, pageProps }:AppProps) {
       // @ts-ignore
     overmind.actions.NextConfig.add.changePage(pageProps.mutations || [])
   }, [pageProps.mutations])
-  useEffect(()=>{
-    if(locale){
-      setLang(locale)
-    }
-  },[locale])
   return (
       <Provider value={overmind}>
         <QueryClientProvider client={queryClient}>
-        <Component {...pageProps}  dir = {getDirection(lang)}/>
+        <Component {...pageProps}  dir = {getDirection(locale || "ar")}/>
         <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Provider>
