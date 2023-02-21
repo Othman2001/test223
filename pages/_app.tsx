@@ -35,14 +35,11 @@ function MyApp ({ Component, pageProps }:AppProps) {
   }, [mutations])
   useEffect(()=>{
     setMutations( pageProps.mutations || [])
-    rehydrate(overmind.state, mutations)
-
-
   },[pageProps.mutations])
   useEffect(() => {
       // @ts-ignore
     overmind.actions.NextConfig.add.changePage(pageProps.mutations || [])
-  }, [overmind.actions.NextConfig.add, pageProps.mutations])
+  }, [pageProps.mutations])
   useEffect(()=>{
     if(locale){
       setLang(locale)
